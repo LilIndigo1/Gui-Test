@@ -1,6 +1,10 @@
 package gui;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +19,7 @@ public class GUI implements ActionListener {
     private JLabel label2;
     private JPanel panel;
     private static JFrame frame;
-    private JButton jbutton;
+    private JButton button;
     public GUI() {
         frame = new JFrame();
         panel = new JPanel();
@@ -28,15 +32,20 @@ public class GUI implements ActionListener {
         frame.setVisible(true);
         frame.setSize(400,400);
 
+        button = new JButton("Click Me!");
+        button.setFocusable(false);
+        button.addActionListener(this);
+        button.setFont(new Font("Comic Sans",Font.BOLD,20));
+        button.setForeground(Color.gray);
+        button.setBackground(Color.LIGHT_GRAY);
+        button.setOpaque(true);
+        button.setBorderPainted(false);
 
-        jbutton = new JButton("Click Me!");
-        jbutton.addActionListener(this);
-        jbutton.setFont(new Font("Serif",Font.BOLD,20));
         label = new JLabel("Number: "+ num);
         label2 = new JLabel("");
         label.setFont(new Font("Serif",Font.BOLD,20));
         panel.add(label);
-        panel.add(jbutton);
+        panel.add(button);
         panel.add(label2);
         java.util.Timer timer = new Timer();
         TimerTask task = new TimerTask() {
